@@ -208,6 +208,9 @@ function validarUsuario () {
 
     let valido = true ;
 
+    let usuarioNombre ;
+    let usuarioPassword ;
+
     const usuario = document.getElementById ("usuarioForm") ;
     const password = document.getElementById ("passwordForm") ;
 
@@ -230,12 +233,14 @@ function validarUsuario () {
 
     if ( valido ) {
 
-        login.open ( "POST" , backend + recursoUsuarios + accionLogin, true ) ;
+        usuarioNombre = usuario.value ;
+        usuarioPassword = password.value ;
 
-    login.setRequestHeader ( "nombre" , usuario.value ) ;
-    login.setRequestHeader ( "password" , password.value ) ;
-        
-        login.send () ;
+        login.open ( "POST" , backend + recursoUsuarios + accionLogin, true ) ;
+        login.setRequestHeader ( "Content-Type" , "application/json" ) ;
+        login.setRequestHeader ( "Accept" , "application/json" ) ;
+
+        login.send ( '{"nombre":"'+ usuarioNombre + '","password":"' + usuarioPassword + '"}' ) ;
     }
 
 } ;
