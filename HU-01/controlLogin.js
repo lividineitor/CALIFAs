@@ -208,6 +208,12 @@ function validarUsuario () {
 
     let valido = true ;
 
+<<<<<<< HEAD
+=======
+    let usuarioNombre ;
+    let usuarioPassword ;
+
+>>>>>>> HU-01
     const usuario = document.getElementById ("usuarioForm") ;
     const password = document.getElementById ("passwordForm") ;
 
@@ -230,12 +236,23 @@ function validarUsuario () {
 
     if ( valido ) {
 
+<<<<<<< HEAD
         login.open ( "POST" , backend + recursoUsuarios + accionLogin, true ) ;
 
     login.setRequestHeader ( "nombre" , usuario.value ) ;
     login.setRequestHeader ( "password" , password.value ) ;
         
         login.send () ;
+=======
+        usuarioNombre = usuario.value ;
+        usuarioPassword = password.value ;
+
+        login.open ( "POST" , backend + recursoUsuarios + accionLogin, true ) ;
+        login.setRequestHeader ( "Content-Type" , "application/json" ) ;
+        login.setRequestHeader ( "Accept" , "application/json" ) ;
+
+        login.send ( '{"nombre":"'+ usuarioNombre + '","password":"' + usuarioPassword + '"}' ) ;
+>>>>>>> HU-01
     }
 
 } ;
