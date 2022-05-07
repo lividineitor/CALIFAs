@@ -260,7 +260,7 @@ function gestorRespuestaLogin () {
         }
 
         else {
-            window.location.href = "vistaPrincipal.html" ;
+            window.location.href = "../HU-02/index.html" ;
         }
     }
 } ;

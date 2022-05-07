@@ -1,3 +1,11 @@
+function cargaTodo () {
+
+    obtenerJuegos () ;
+    obtenerCola () ;
+
+}
+
+
 function obtenerJuegos() {
 
     let peticion = new XMLHttpRequest();
