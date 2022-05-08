@@ -233,14 +233,14 @@ function validarUsuario () {
 
     if ( valido ) {
 
-        usuarioNombre = usuario.value ;
+        usuarioCorreo = usuario.value ;
         usuarioPassword = password.value ;
 
         login.open ( "POST" , backend + recursoUsuarios + accionLogin, true ) ;
         login.setRequestHeader ( "Content-Type" , "application/json" ) ;
         login.setRequestHeader ( "Accept" , "application/json" ) ;
 
-        login.send ( '{"nombre":"'+ usuarioNombre + '","password":"' + usuarioPassword + '"}' ) ;
+        login.send ( '{"email":"'+ usuarioCorreo + '","password":"' + usuarioPassword + '"}' ) ;
     }
 
 } ;
@@ -255,12 +255,24 @@ function gestorRespuestaLogin () {
     
     if ( this.readyState == 4 ) {
 
-        if ( this.status != 200 ) {
+        if ( this.status == 400 ) {
+            crearDialogo ( 0 , "Solicitud mal construida." ) ;
+        }
+        
+        else if ( this.status == 401 ) {
             crearDialogo ( 0 , "Usuario o password incorrectos." ) ;
         }
 
-        else {
+        else if ( this.status == 409 ) {
+            crearDialogo ( 0 , "La cuenta está activa." ) ;
+        }
+
+        else if ( this.status == 200 ) {
             window.location.href = "../HU-02/index.html" ;
+        }
+
+        else {
+            crearDialog ( 0 , "Error al realizar el login.\nIntente de nuevo." ) ;
         }
     }
 } ;
