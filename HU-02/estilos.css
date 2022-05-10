@@ -1,72 +1,96 @@
-body, html {
+body,
+html {
     height: 100%;
     font-family: "Inconsolata", sans-serif;
-  }
-  
+}
+
 .bgimg {
     background-position: center;
     background-size: cover;
     background-image: url("https://wallpapercave.com/wp/wc1765288.jpg");
     min-height: 75%;
 }
-  
+
 .menu {
     display: none;
 }
-  
-  
-#cola{
-    float:right;
-    width:300px;
-    height:500px;
-    margin-left:40px;
-    background-color:lightblue;
-}
-  
-#juego{
-    
-    float:left;
-    width:950px;
-    height:500px;
-    background-color:lightblue;
-}
-  
-#imgjuegos{
 
-    width:100px;
-    height:100px;
-  
+
+#cola {
+    float: right;
+    width: 300px;
+    height: 500px;
+    margin-left: 40px;
+    /*background-color:#c79e6c;*/
+    
 }
-  
-  
-.contenedor{
-    
-    padding-top:50px;
-    padding-left:50px;
-    padding-right:50px;
-    padding-bottom:50px;
-   
-    max-width:100%;
-    height:600px;
-    background-color: lightgray;
-    
+
+
+
+#juego {
+
+    float: left;
+    width: 950px;
+    height: 500px;
+    /* background-color:#c79e6c;*/
+}
+
+#imgjuegos {
+
+    width: 100px;
+    height: 100px;
+
+}
+
+
+.contenedor {
+
+    padding-top: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+
+    max-width: 100%;
+    height: 600px;
+    background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+    /*https://webgradients.com/*/
     display: flex;
     flex-direction: row;
     justify-content: center;
     flex-flow: wrap;
-  
+
 }
-  
-@media screen and (max-width:1200px){
-  
-    #juego, #cola{
-       width:50%;
+
+@media screen and (max-width:1200px) {
+
+    #juego,
+    #cola {
+        width: 50%;
     }
 }
-  
-@media screen and (max-width:600px){
-  
-    #juego, #cola{
-       width:90%;
+
+@media screen and (max-width:600px) {
+
+    #juego,
+    #cola {
+        width: 90%;
     }
+}
+
+/* 
+.object{
+    float:right;
+    width:300px;
+    height:500px;
+    margin-left:40px;
+} */
+
+/*style="max-width:300px; max-height: 500px;"*/
+.w3-container{
+    background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%) !important;
+
+}
+#contacto{
+    background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+
 }

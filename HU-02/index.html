@@ -1,155 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <title>Juegos Califa's</title>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=chrome">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
-    <link rel="stylesheet" href="estilos.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=chrome" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Inconsolata"
+    />
+    <link rel="stylesheet" href="estilos.css" />
     <script src="script.js"></script>
- 
-    
-</head>
+    <link rel="stylesheet" href="/lib/w3.css" />
+  </head>
 
-<body onload="cargaTodo()" >
-    
-        
+  <body onload="cargaTodo()">
     <div class="w3-top">
-        <div class="w3-row w3-padding w3-black">
-            <div class="w3-col s3">
-                <a href="#" class="w3-button w3-block w3-black">INICIO</a>
-            </div>
-            <div class="w3-dropdown-hover w3-hide-small w3-col s3">
-                <button class="w3-button w3-block w3-black" title="More">JUEGOS<i class="fa fa-caret-down"></i></button>
-                <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                    <a href="#" class="w3-bar-item w3-button">Piedra papel y tijeras</a>
-                    <a href="#" class="w3-bar-item w3-button">Volados</a>
-                </div>
-            </div>
-            <div class="w3-col s3">
-                <a href="#contacto" class="w3-button w3-block w3-black">CONTACTO</a>
-            </div>
-            <div class="w3-col s3" onclick="document.getElementById('ticketModal').style.display='block'">
-                <a href="#where" class="w3-button w3-block w3-black">CERRAR SESIÓN</a>
-            </div>
+      <div class="w3-row w3-padding w3-black">
+        <div class="w3-col s3">
+          <a href="#" class="w3-button w3-block w3-black">INICIO</a>
         </div>
+        <div class="w3-dropdown-hover w3-hide-small w3-col s3">
+          <button class="w3-button w3-block w3-black" title="More">
+            JUEGOS<i class="fa fa-caret-down"></i>
+          </button>
+          <div class="w3-dropdown-content w3-bar-block w3-card-4">
+            <a href="#" class="w3-bar-item w3-button">Piedra papel y tijeras</a>
+            <a href="#" class="w3-bar-item w3-button">Volados</a>
+          </div>
+        </div>
+        <div class="w3-col s3">
+          <a href="#contacto" class="w3-button w3-block w3-black">CONTACTO</a>
+        </div>
+        <div
+          class="w3-col s3"
+          onclick="document.getElementById('ticketModal').style.display='block'"
+        >
+          <a href="#where" class="w3-button w3-block w3-black">CERRAR SESIÓN</a>
+        </div>
+      </div>
     </div>
 
     <!-- Header with image -->
     <header class="bgimg w3-display-container w3-grayscale-min" id="home">
-
-        <div class="w3-display-bottomleft w3-center w3-padding-large w3-hide-small">
-            <span class="w3-tag">Califa's games</span>
-        </div>
-        <div class="w3-display-middle w3-center">
-            <span class="w3-text-white" style="font-size:90px"></span>
-        </div>
-
+      <div
+        class="w3-display-bottomleft w3-center w3-padding-large w3-hide-small"
+      >
+        <span class="w3-tag">Califa's games</span>
+      </div>
+      <div class="w3-display-middle w3-center">
+        <span class="w3-text-white" style="font-size: 90px"></span>
+      </div>
     </header>
+   
+    <div   class="contenedor w3-content" id="juegoycola">
+      <div id="juego">
+        <img src="" alt="" class="w3-hover-opacity" />
+      </div>
 
-    <div class="contenedor w3-content" id="juegoycola">
-        <div id="juego"><img src="" alt="" class="w3-hover-opacity">
-        </div>
-        <div id="cola">
+      <div id="cola">
         <object data="../HU-03/Cola.html"></object>
-        
-        </div>
+      </div>
     </div>
 
+    <div class="w3-container"
+      id="spotify"
+      style="padding-bottom: 50px; padding-top: 50px"
 
+    >
+      <div class="w3-content" style="max-width: 700px">
+        <h2 style="text-align: center">Reproductor de Spotify<br /></h2>
+        <div
+          class="collapse navbar-collapse justify-content-left"
+          id="navegacion"
+          style="display: flex; flex-direction: row"
+          justify-content:
+          center;
+        >
+          <h3 style="margin: 15px">Agrega tu Playlist Preferida:</h3>
+          <input type="text" id="txtbusqueda" style="margin: 15px" />
 
-
-    <div class="w3-container" id="spotify" style="padding-bottom:50px; padding-top:50px;">
-        <div class="w3-content" style="max-width:700px">
-            <h2 style="text-align:center">Reproductor de Spotify<br></h2>
-            <div class="collapse navbar-collapse justify-content-left" id="navegacion" style="display: flex;
-flex-direction: row" justify-content: center;>
-                <h3 style="margin: 15px">Agrega tu Playlist Preferida: </h3>
-                <input type="text" id="txtbusqueda" style="margin: 15px">
-
-                <button class="w3-button w3-black w3-margin-bottom" style="margin: 10px" onclick="cargaplaylist()"
-                    id="btnbusqueda">Buscar</button>
-            </div>
-
-           <iframe src="https://open.spotify.com/embed/playlist/6mRRGF4klfgUzbD2ZKOCq0?utm_source=generator&theme=0"
-                width="100%" height="380" frameBorder="0" allowfullscreen=""
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen;  picture-in-picture" id="spoti"></iframe>
+          <button
+            class="w3-button w3-black w3-margin-bottom"
+            style="margin: 10px"
+            onclick="cargaplaylist()"
+            id="btnbusqueda"
+          >
+            Buscar
+          </button>
         </div>
+
+        <iframe
+          src="https://open.spotify.com/embed/playlist/6mRRGF4klfgUzbD2ZKOCq0?utm_source=generator&theme=0"
+          width="100%"
+          height="380"
+          frameborder="0"
+          allowfullscreen=""
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen;  picture-in-picture"
+          id="spoti"
+        ></iframe>
+      </div>
     </div>
 
-
-
-
-
-    <div class="w3-container" id="twitter" style="padding-bottom:50px; padding-top:50px;">
-        <div class="w3-content" style="max-width:700px">
-            <a class="twitter-timeline" data-lang="es" data-width="700" data-height="500" data-theme="dark"
-                href="https://twitter.com/Juan_CarlosCC_">Tweets by TwitterDev</a>
-            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-        </div>
+    <div
+      class="w3-container"
+      id="twitter"
+      style="padding-bottom: 50px; padding-top: 50px">
+      <div class="w3-content" style="max-width: 700px">
+        <a
+          class="twitter-timeline"
+          data-lang="es"
+          data-width="700"
+          data-height="500"
+          data-theme="dark"
+          href="https://twitter.com/Juan_CarlosCC_"
+          >Tweets by TwitterDev</a>
+        <script
+          async
+          src="https://platform.twitter.com/widgets.js"
+          charset="utf-8"
+        ></script>
+      </div>
     </div>
-
-
-
-
-
 
     <!-- Add a background color and large text to the whole page -->
     <div class="w3-sand w3-grayscale w3-large">
+      <!-- Ventana emergente login -->
+      <!-- Ticket Modal -->
+      <div id="ticketModal" class="w3-modal">
+        <div class="w3-modal-content w3-animate-top w3-card-4">
+          <header class="w3-container w3-teal w3-center w3-padding-32">
+            <span
+              onclick="document.getElementById('ticketModal').style.display='none'"
+              class="w3-button w3-teal w3-xlarge w3-display-topright"
+              >×</span
+            >
+            <h2 class="w3-wide">
+              <i class="fa fa-suitcase w3-margin-right"></i>Tickets
+            </h2>
+          </header>
+          <div class="w3-container">
+            <p>
+              <label><i class="fa fa-shopping-cart"></i> Usuario</label>
+            </p>
+            <input
+              class="w3-input w3-border"
+              type="text"
+              placeholder="How many?"
+            />
+            <p>
+              <label><i class="fa fa-user"></i> Contraseña</label>
+            </p>
+            <input
+              class="w3-input w3-border"
+              type="text"
+              placeholder="Enter email"
+            />
+            <button
+              class="w3-button w3-block w3-teal w3-padding-16 w3-section w3-right"
+            >
+              Ingresar <i class="fa fa-check"></i>
+            </button>
 
-        <!-- Ventana emergente login -->
-        <!-- Ticket Modal -->
-        <div id="ticketModal" class="w3-modal">
-            <div class="w3-modal-content w3-animate-top w3-card-4">
-                <header class="w3-container w3-teal w3-center w3-padding-32">
-                    <span onclick="document.getElementById('ticketModal').style.display='none'"
-                        class="w3-button w3-teal w3-xlarge w3-display-topright">×</span>
-                    <h2 class="w3-wide"><i class="fa fa-suitcase w3-margin-right"></i>Tickets</h2>
-                </header>
-                <div class="w3-container">
-                    <p><label><i class="fa fa-shopping-cart"></i> Usuario</label></p>
-                    <input class="w3-input w3-border" type="text" placeholder="How many?">
-                    <p><label><i class="fa fa-user"></i> Contraseña</label></p>
-                    <input class="w3-input w3-border" type="text" placeholder="Enter email">
-                    <button class="w3-button w3-block w3-teal w3-padding-16 w3-section w3-right">Ingresar <i
-                            class="fa fa-check"></i></button>
-
-                    <p class="w3-right">¿No tienes cuenta?<a href="#" class="w3-text-blue">Registrate</a></p>
-                    <p class="w3-right">¿Olvistaste tu contraseña? <a href="#" class="w3-text-blue">Recuperar
-                            Contraseña</a></p>
-                    <button class="w3-button w3-red w3-section"
-                        onclick="document.getElementById('ticketModal').style.display='none'">Close<i
-                            class="fa fa-remove"></i></button>
-
-                </div>
-            </div>
+            <p class="w3-right">
+              ¿No tienes cuenta?<a href="#" class="w3-text-blue">Registrate</a>
+            </p>
+            <p class="w3-right">
+              ¿Olvistaste tu contraseña?
+              <a href="#" class="w3-text-blue">Recuperar Contraseña</a>
+            </p>
+            <button
+              class="w3-button w3-red w3-section"
+              onclick="document.getElementById('ticketModal').style.display='none'"
+            >
+              Close<i class="fa fa-remove"></i>
+            </button>
+          </div>
         </div>
+      </div>
 
+      <!-- Contact/Area Container -->
+      <div class="w3-container" id="contacto" style="padding-bottom: 32px">
+        <div class="w3-content" style="max-width: 700px">
+          <h5 class="w3-center w3-padding-48">
+            <span class="w3-tag w3-wide">CONTACTANOS</span>
+          </h5>
 
-        <!-- Contact/Area Container -->
-        <div class="w3-container" id="contacto" style="padding-bottom:32px;">
-            <div class="w3-content" style="max-width:700px">
-                <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">CONTACTANOS</span></h5>
-                <p>Find us at some address at some place.</p>
-                <!--<img src="/w3images/map.jpg" class="w3-image" style="width:100%">-->
-            </div>
+          <div class="w3-container">
+            <h2>Ingrese sus datos</h2>
+          </div>
+
+          <form class="w3-container w3-blue">
+            <p>
+              <label>Nombre</label>
+              <input class="w3-input" type="text" />
+            </p>
+
+            <p>
+              <label>Apellido</label>
+              <input class="w3-input" type="text" />
+            </p>
+
+            <p>
+              <label>Email</label>
+              <input class="w3-input" type="text" />
+            </p>
+
+            <p>Por favor agrege su mensaje.</p>
+            <textarea class="w3-input" name="message"></textarea>
+            <br />
+            <input type="submit" />
+          </form>
+
+          <!--<img src="/w3images/map.jpg" class="w3-image" style="width:100%">-->
         </div>
-        <!-- End page content -->
+      </div>
+      <!-- End page content -->
     </div>
-
-
-
-
 
     <!-- Footer -->
     <footer class="w3-center w3-light-grey w3-padding-48 w3-large">
-        <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank"
-                class="w3-hover-text-green">UAM-I Califa's</a></p>
+      <p>
+        Powered by
+        <a
+          href="https://www.w3schools.com/w3css/default.asp"
+          title="W3.CSS"
+          target="_blank"
+          class="w3-hover-text-green"
+          >UAM-I Califa's</a
+        >
+      </p>
     </footer>
-
-
-</body>
+  </body>
 </html>
