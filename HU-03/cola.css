@@ -48,12 +48,12 @@ body {
   }
   .cola{
     width: 300px;
-    height: 500px;
+    height: 450px;
   }
   .cronometro{
     width: 300px;
-    height: 500px;
+    /*height: 150px;*/
   }
   .busqueda{
     color: Black !important;
-  }
+}
