@@ -255,24 +255,35 @@ function gestorRespuestaLogin () {
     
     if ( this.readyState == 4 ) {
 
-        if ( this.status == 400 ) {
-            crearDialogo ( 0 , "Solicitud mal construida." ) ;
-        }
-        
-        else if ( this.status == 401 ) {
-            crearDialogo ( 0 , "Usuario o password incorrectos." ) ;
-        }
+        switch ( this.status ) {
 
-        else if ( this.status == 409 ) {
-            crearDialogo ( 0 , "La cuenta está activa." ) ;
-        }
+            case 200 :
+                window.location.href = "../HU-02/index.html" ;
+                break ;
+                
+            case 400 :
+                crearDialogo ( 0 , "Solicitud mal construida." ) ;
+                break ;
+                
+            case 401 :
+            case 404 :
+                crearDialogo ( 0 , "Usuario o password incorrectos." ) ;
+                break ;
+                
+            case 409 :
+                crearDialogo ( 0 , "La cuenta está activa." ) ;
+                break ;
+                
+            case 500 :
+                crearDialogo ( 0 , "Error interno del servidor." ) ;
+                break ;
+                
+            case 501 :
+                crearDialogo ( 0 , "Funcionalidad no implementada." ) ;
+                break ;
 
-        else if ( this.status == 200 ) {
-            window.location.href = "../HU-02/index.html" ;
-        }
-
-        else {
-            crearDialog ( 0 , "Error al realizar el login.\nIntente de nuevo." ) ;
+            default :
+                crearDialogo ( 0 , "Error desconocido." ) ;
         }
     }
 } ;
@@ -289,16 +300,26 @@ function registrarUsuario () {
     const password2 = document.getElementById("password2Form" ) ;
 
     // Validaciones necesarias
+
+    // Validación de usuario
     if ( usuario.value == "" ) {
         crearDialogo ( 0 , "El usuario es obligatorio." ) ;
         valido = false ;
     }
 
+    // Validación de email
     if ( email.value == "" ) {
         crearDialogo ( 0 , "El correo es obligatorio." ) ;
         valido = false ;
     }
 
+    else {
+
+        if ( !esEmail ( email.value ) )
+            crearDialogo ( 0 , 'Email inválido<br/>Ejemplo: "ejemplo@ejemplo.ejemplo"' ) ;
+        }
+
+    // Validación de contraseña
     if ( password.value == "" ) {
         crearDialogo ( 0 , "El password es obligatorio." ) ;
         valido = false ;
@@ -321,7 +342,10 @@ function registrarUsuario () {
     if ( valido ) {
 
         registrar.open ( "POST" , backend + recursoUsuarios , true ) ;
-        registrar.send ( '{"nombre": "' + usuario.value + '","email":"' + email.value + '","password":"' + password.value + '"}' ) ;
+        registrar.setRequestHeader ( "Content-Type" , "application/json" ) ;
+        registrar.setRequestHeader ( "Accept" , "application/json" ) ;
+        
+        registrar.send ( '{"usuarioId": 0 ,"nombre": "' + usuario.value + '","email":"' + email.value + '","password":"' + password.value + '"}' ) ;
     }
 
 }
@@ -330,19 +354,47 @@ function gestorRespuestaRegistro () {
 
    if ( this.readyState == 4 ) {
 
-        if ( this.status == 409 ) {
-            crearDialogo ( 1 , "Usuario ya existente." ) ;
-        }
+        switch ( this.status ) {
 
-        else if ( this.status == 201 ) {
-            crearDialogo ( 2 , "Creación exitosa." ) ;
-            window.location.href = "login.html" ;
+            case 201 :
+                crearDialogo ( 2 , "Creación exitosa" ) ;
+                window.location.href = "login.html" ;
+                break ;
 
-        }
+            case 400 :
+                crearDialogo ( 0 , "Solicitud mal construida." ) ;
+                break ;
 
-        else {
-            crearDialogo ( 0 , "Error al crear usuario." ) ;
+            case 409 :
+                crearDialogo ( 0 , "Usuario ya existente." ) ;
+                break ;
+
+            case 500 :
+                crearDialogo ( 0 , "Error interno del servidor." ) ;
+                break ;
+
+            case 501 :
+                crearDialogo ( 0 , "Funcionalidad no implementada." ) ;
+                break ;
+
+            default :
+                crearDialogo ( 0 , "Error desconocido." ) ;
+
         }
 
     }
+}
+
+/**
+ *
+ *  Funciones accesorias
+ * 
+ */
+
+function esEmail ( email ) {
+
+    const regexEmail = /[^@]+@[^@]+\.[^@]+/;
+
+    return regexEmail.test ( email ) ;
+
 }
