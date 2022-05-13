@@ -6,9 +6,9 @@
 
 }
 .container{
-    max-width: 800px;
-    height: 100vh;
-    max-width: 745px;
+    max-width: 950px;
+    /*height: 100vh;*/
+    max-width: 500px;
     margin: 0 auto;
     background-color: red;
     display: flex;
@@ -23,6 +23,7 @@ h1{
      padding: 20px;
 }
 
+
 .start-text{
     font-size: 26px;
     text-align: center;
@@ -33,5 +34,10 @@ h1{
     width: 100%;
 }
 #group-btn > button > img {
-    width: 368px;
+    width: 475px;
+}
+
+img{
+    max-width: 241px;
+    max-height: 500px;
 }

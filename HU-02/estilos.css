@@ -1,72 +1,239 @@
 body, html {
     height: 100%;
     font-family: "Inconsolata", sans-serif;
-  }
-  
+    
+}
+
+#contenedorgeneral{
+    /*background-image: linear-gradient(135deg, #00B7D4, #505488, #2F3F80, #161569, #5A4894, #A950A1, #FF7CAE);*/
+    /*background-image: linear-gradient(#f0e4bb , #fdfdd9);*/
+    /*background-image: linear-gradient(to top, #fddb92 0%, #d1fdff 100%);*/
+    /*background-image: linear-gradient(to right, #fdfdd9 0%, #ecd19c 19%, #d2eff8 42%, #f0e4bb 79%, #866959 100%);*/
+    background-image: linear-gradient(135deg, #d7d2cc 0%, #304352 100%);
+    /*background-color: #a09e9e;*/
+    background-size: 100%;
+
+}
+
 .bgimg {
     background-position: center;
     background-size: cover;
     background-image: url("https://wallpapercave.com/wp/wc1765288.jpg");
     min-height: 75%;
 }
-  
+
 .menu {
     display: none;
 }
+
+
+#cola, #objetocola {
+    float: right;
+    width: 300px;
+    height: 500px;
+    margin-left: 40px;
+    /*background-color:#c79e6c;*/
+
+}
+
+
+
+#juego, #objetojuego {
+
+    float: left;
+    width: 950px;
+    height: 500px;
+    /* background-color:#c79e6c;*/
+    
+
+}
+
+#imgjuegos {
+
+    width: 100px;
+    height: 100px;
+
+}
+
+
+.contenedor {
+
+     
   
-  
-#cola{
+    padding-top: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+
+    max-width: 80%;
+    height: 600px;
+    /*background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);*/
+    /*https://webgradients.com/*/
+    
+    display: flex;
+    
+    flex-direction: row;
+    justify-content: center;
+    flex-flow: wrap;
+
+}
+
+.esquinas{
+  border-radius: 15px;
+}
+
+
+#spotify2{
+    background-color: #050505;
+    padding: 10px 0px;
+    border-radius: 15px;
+}
+
+#btnbusqueda{
+  background-color: blueviolet;
+}
+
+
+@media screen and (max-width:1200px) {
+
+    #juego,
+    #cola {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width:600px) {
+
+    #juego,
+    #cola {
+        width: 90%;
+    }
+}
+
+
+
+/* 
+.object{
     float:right;
     width:300px;
     height:500px;
     margin-left:40px;
-    background-color:lightblue;
-}
-  
-#juego{
-    
-    float:left;
-    width:950px;
-    height:500px;
-    background-color:lightblue;
-}
-  
-#imgjuegos{
+} */
 
-    width:100px;
-    height:100px;
-  
-}
-  
-  
-.contenedor{
+/*style="max-width:300px; max-height: 500px;"*/
+.w3-container {
+    /*background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%) !important;*/
     
-    padding-top:50px;
-    padding-left:50px;
-    padding-right:50px;
-    padding-bottom:50px;
+
+
+
+}
+
+#contacto {
+    /*background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);*/
+    
+
+}
+
+
+body {
+
+    /*background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+    background-size:200%*/
+
+
    
-    max-width:100%;
-    height:600px;
-    background-color: lightgray;
-    
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-flow: wrap;
-  
 }
-  
-@media screen and (max-width:1200px){
-  
-    #juego, #cola{
-       width:50%;
-    }
-}
-  
-@media screen and (max-width:600px){
-  
-    #juego, #cola{
-       width:90%;
-    }
-}
+
+
+* {
+    box-sizing: border-box;
+  }
+
+  /* style the container */
+  #containercontacto {
+    position: relative;
+    background-color: #050505;
+    padding: 20px 0 30px 0;
+  }
+
+  #rowcontacto,#playpref,#reprospoti{
+
+    background: #ffffff;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-family: "Inconsolata", sans-serif;
+
+  }
+
+  /* style inputs and link buttons */
+  #botonfacebook, #botontwitter {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    margin: 5px 0;
+    opacity: 0.85;
+    display: inline-block;
+    font-size: 17px;
+    line-height: 20px;
+    text-decoration: none; /* remove underline from anchors */
+  }
+
+  input:hover, #botonfacebook:hover, #botontwitter:hover {
+    opacity: 1;
+  }
+
+  /* add appropriate colors to fb, twitter and google buttons */
+  .fb {
+    background-color: #3B5998;
+    color: white;
+  }
+
+  .twitter {
+    background-color: #55ACEE;
+    color: white;
+  }
+
+  .google {
+    background-color: #dd4b39;
+    color: white;
+  }
+
+  /* style the submit button */
+  input[type=submit] {
+    background-color: #04AA6D;
+    color: white;
+    cursor: pointer;
+  }
+
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+
+  /* Two-column layout */
+  .col {
+    float: center;
+    width: 50%;
+    margin: auto;
+    padding: 700 50px;
+    margin-top: 6px;
+  }
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+
+  /* hide some text on medium and large screens */
+  .hide-md-lg {
+    display: none;
+  }
+
+  /* bottom container */
+  /* Responsive layout - when the screen is less than 650px wide, make the two columns stack on top of each other instead of next to each other */
+
+/* hide the vertical line */

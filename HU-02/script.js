@@ -1,6 +1,7 @@
 function cargaTodo () {
 
-    obtenerJuegos () ;
+    //obtenerJuegoVolado () ;
+    //obtenerJuegos () ;
     obtenerCola () ;
 
 }
@@ -13,7 +14,7 @@ function obtenerJuegos() {
     peticion.onreadystatechange = procesarJuegos;
 
     peticion.open("GET", "https://califas.mocklab.io/v1/juegos", true);
-
+    //
     peticion.send();
     //peticion.send({"nombre":"fulanito", "email":"fulanito@de.tal", "password":"losFulanitosSonPersonas"});
 
@@ -76,6 +77,40 @@ function obtenerCola () {
   }
 }
 
+
+function obtenerJuegoVolado () {
+
+  var z, i, elmnt, file, xhttp;
+  /* Loop through a collection of all HTML elements: */
+  z = document.getElementsByTagName("*");
+  for (i = 0; i < z.length; i++) {
+    elmnt = z[i];
+    /*search for elements with a certain atrribute:*/
+    file = elmnt.getAttribute("w3-include-html");
+    if (file) {
+      /* Make an HTTP request using the attribute value as the file name: */
+      xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+          if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+          if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+          /* Remove the attribute, and call this function once more: */
+          elmnt.removeAttribute("w3-include-html");
+          obtenerJuegoVolado();
+        }
+      }
+      xhttp.open("GET", file, true);
+      xhttp.send();
+      /* Exit the function: */
+      return;
+    }
+  }
+}
+
+
+
+
+
 /*
 function obtenerCola() {
 
@@ -122,28 +157,25 @@ function procesarCola() {
 
 */
 
-$("#btnbusqueda").click(function () {
 
-    //btnBusqueda = document.querySelector("#txtBusqueda").value;
-    //var id = document.getElementById("txtBusqueda").value;
 
-    var valor = $("#txtBusqueda").val();
 
-    //$('#spoti').attr("src","https://open.spotify.com/embed/playlist/5TVCWg6F2GvmsfWhJEPlzC");
-    document.getElementById("spoti").setAttribute("src", "https://open.spotify.com/embed/playlist/5TVCWg6F2GvmsfWhJEPlzC");
-    document.getElementById("spoti").contentWindow.location.reload();
-});
+
+function cargajuego() {
+
+
+    document.getElementById("objetojuego").setAttribute("data", "../HU-06/index.html");
+    document.getElementById("imgjuego").setAttribute("style", "display:none");
+    //document.getElementById("contenedorgeneral").contentWindow.removeAttribute("imgjuego");
+    //document.getElementById("juego").contentWindow.location.reload();
+    
+}
 
 
 function cargaplaylist() {
 
-    var idplaylist = document.getElementById("txtbusqueda").value;
+  var idplaylist = document.getElementById("txtbusqueda").value;
 
-    if (idplaylist == "") {
-
-
-    }
-
-    document.getElementById("spoti").setAttribute("src", "https://open.spotify.com/embed/playlist/" + idplaylist);
-    document.getElementById("spoti").contentWindow.location.reload();
+  document.getElementById("spoti").setAttribute("src", "https://open.spotify.com/embed/playlist/" + idplaylist);
+  document.getElementById("spoti").contentWindow.location.reload();
 }
