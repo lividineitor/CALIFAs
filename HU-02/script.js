@@ -1,6 +1,6 @@
 function cargaTodo () {
 
-    obtenerJuegoVolado () ;
+    //obtenerJuegoVolado () ;
     //obtenerJuegos () ;
     obtenerCola () ;
 
@@ -14,7 +14,7 @@ function obtenerJuegos() {
     peticion.onreadystatechange = procesarJuegos;
 
     peticion.open("GET", "https://califas.mocklab.io/v1/juegos", true);
-
+    //
     peticion.send();
     //peticion.send({"nombre":"fulanito", "email":"fulanito@de.tal", "password":"losFulanitosSonPersonas"});
 
@@ -157,28 +157,25 @@ function procesarCola() {
 
 */
 
-$("#btnbusqueda").click(function () {
 
-    //btnBusqueda = document.querySelector("#txtBusqueda").value;
-    //var id = document.getElementById("txtBusqueda").value;
 
-    var valor = $("#txtBusqueda").val();
 
-    //$('#spoti').attr("src","https://open.spotify.com/embed/playlist/5TVCWg6F2GvmsfWhJEPlzC");
-    document.getElementById("spoti").setAttribute("src", "https://open.spotify.com/embed/playlist/5TVCWg6F2GvmsfWhJEPlzC");
-    document.getElementById("spoti").contentWindow.location.reload();
-});
+
+function cargajuego() {
+
+
+    document.getElementById("objetojuego").setAttribute("data", "../HU-06/index.html");
+    document.getElementById("imgjuego").setAttribute("style", "display:none");
+    //document.getElementById("contenedorgeneral").contentWindow.removeAttribute("imgjuego");
+    //document.getElementById("juego").contentWindow.location.reload();
+    
+}
 
 
 function cargaplaylist() {
 
-    var idplaylist = document.getElementById("txtbusqueda").value;
+  var idplaylist = document.getElementById("txtbusqueda").value;
 
-    if (idplaylist == "") {
-
-
-    }
-
-    document.getElementById("spoti").setAttribute("src", "https://open.spotify.com/embed/playlist/" + idplaylist);
-    document.getElementById("spoti").contentWindow.location.reload();
+  document.getElementById("spoti").setAttribute("src", "https://open.spotify.com/embed/playlist/" + idplaylist);
+  document.getElementById("spoti").contentWindow.location.reload();
 }
