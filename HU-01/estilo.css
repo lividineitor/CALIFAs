@@ -40,10 +40,39 @@ body, html {
 
 }
 
+
+/*
+#loginContainer{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+*/
+
+
+
+#usuarioForm{
+    margin-bottom: 15px;
+}
+
+#emailForm{
+    margin-bottom: 20px;
+}
+
+#passwordForm, #password2Form{ 
+    margin-left: 34px;
+    margin-bottom: 15px;  
+}
+
+
 .btnNormal {
 
     background-color: black ;
     color: white ;
+    margin: 15px;
 
 }
 
