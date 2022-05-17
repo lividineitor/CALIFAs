@@ -6,7 +6,7 @@ const backend = 'http://localhost:8080' ;
 const recursoPpt = '/v1/ppt' ;
 
 const ppt = new XMLHttpRequest () ;
-ppt.onreadystatechange = gestorRespuestaPpt ;
+//ppt.onreadystatechange = gestorRespuestaPpt ;
 
 const TIE = 0;
 const WIN = 1;
@@ -15,13 +15,13 @@ const LOST = 2;
 let isPlaying = false;
 
 const PptDto = {
-    pptId, 
-    nombre,
-    usuario1,
-    eleccion1,
-    usuario2,
-    eleccion2,
-    ganador
+    pptId:0, 
+    nombre:"",
+    usuario1:0,
+    eleccion1:"",
+    usuario2:0,
+    eleccion2:"",
+    ganador:0
 }; 
 
 function setPpt(Dtp){
@@ -43,13 +43,15 @@ const machineImg = document.getElementById("machine-img");
 
 function juego(algo){
 
-    let ruta = "http://localhost:8080/v1/ppts/1/usuarioId=1?accion=eleccion?eleccion=";
+    let ruta = "http://localhost:8080/v1/ppts/1?usuarioId=1&accion=eleccion&eleccion=";
 
     let peticion = new XMLHttpRequest();
 
     peticion.onreadystatechange = procesarJuegos;
 
-    peticion.open("POST", ruta +algo, true);
+    //peticion.open("POST", ruta + algo, true);
+    peticion.open("POST", "http://localhost:8080/v1/ppts/1?usuarioId=2&action=eleccion&eleccion=tijeras", true);
+
 
     peticion.setRequestHeader ( "Content-Type" , "application/json" ) ;
 
