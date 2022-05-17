@@ -2,30 +2,66 @@ const ROCK = "rock";
 const PAPER = "paper";
 const SCISSORS = "scissors";
 
+const backend = 'http://localhost:8080' ;
+const recursoPpt = '/v1/ppt' ;
+
+const ppt = new XMLHttpRequest () ;
+//ppt.onreadystatechange = gestorRespuestaPpt ;
+
 const TIE = 0;
 const WIN = 1;
 const LOST = 2;
 
 let isPlaying = false;
 
-const rockBtn = document.getElementById("rock");
+const PptDto = {
+    pptId:0, 
+    nombre:"",
+    usuario1:0,
+    eleccion1:"",
+    usuario2:0,
+    eleccion2:"",
+    ganador:0
+}; 
+
+function setPpt(Dtp){
+    this.PptDto.pptId = Dtp.pptId; 
+    this.PptDto.nombre = Dtp.nombre; 
+    this.PptDto.eleccion1 = Dtp.eleccion1; 
+    this.PptDto.usuario2 = Dtp.usuario2;
+    this.PptDto.eleccion2 = Dtp.eleccion2; 
+    this.PptDto.ganador = Dtp.ganador;  
+}
+
+
+const rock = document.getElementById("rock");
 const paperBtn = document.getElementById("paper");
 const scissorsBtn = document.getElementById("scissors");
 const resultText = document.getElementById("start-text");
 const userImg = document.getElementById("user-img");
 const machineImg = document.getElementById("machine-img");
 
-rockBtn.addEventListener("click", () => {
-    play(ROCK);
-});
-paperBtn.addEventListener("click", () => {
-    play(PAPER);
-});
-scissorsBtn.addEventListener("click", () => {
-    play(SCISSORS);
-});
+function juego(algo){
 
-function play(userOption) {
+    let ruta = "http://localhost:8080/v1/ppts/1?usuarioId=1&accion=eleccion&eleccion=";
+
+    let peticion = new XMLHttpRequest();
+
+    peticion.onreadystatechange = procesarJuegos;
+
+    //peticion.open("POST", ruta + algo, true);
+    peticion.open("POST", "http://localhost:8080/v1/ppts/1?usuarioId=2&action=eleccion&eleccion=tijeras", true);
+
+
+    peticion.setRequestHeader ( "Content-Type" , "application/json" ) ;
+
+    peticion.send();
+     
+   
+    
+}
+
+/*function play(userOption) {
     if(isPlaying) return;
 
     isPlaying = true;
@@ -74,7 +110,7 @@ function calcMachineOption() {
             return SCISSORS;
     }
 }
-
+//Codigo que es posible quitar
 function calcResult(userOption, machineOption) {
     if (userOption === machineOption) {
         return TIE;
@@ -96,3 +132,60 @@ function calcResult(userOption, machineOption) {
 
     }
 }
+
+//Hasta aqui se tiene que quitar 
+
+function cargaTodo () {
+
+    obtenerJuegoPPT () ;
+    
+
+}*/
+
+
+function procesarJuegos(){
+    if(this.status==204){
+
+        userImg.src = "img/" + userOption + ".svg";
+        resultText.innerHTML = "Escojiendo";
+        switch (result) {
+            case TIE:
+                resultText.innerHTML = "Empate";
+                break;
+            case WIN:
+                resultText.innerHTML = "¡Ganaste!";
+                break;
+            case LOST:
+                resultText.innerHTML = "¡Perdiste!";
+                break;
+        }
+    }else{
+        console.log(this.status);
+    }
+    
+    
+}
+
+/*function gestorRespuestaPpt () {
+    
+    console.log("paso por aqui");
+    //if ( this.readyState == 4 ) {
+
+        switch (this.status){
+            case 204:
+                console.log("La petición se ha completado con éxito pero su respuesta no tiene ningún contenido");
+                break;
+            case 404:
+                console.log("Algun tipo de error");
+                break;
+            case 503:
+                console.log("El servidor no está listo para manejar la petición.");
+                break;
+            default:
+                console.log("Error desconocido");
+                break;
+        }
+        console.log("Este es el estado " + this.status);
+    //}
+};*/
+

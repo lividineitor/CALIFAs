@@ -6,7 +6,8 @@
     <title>Piedra papel o tijeras</title>
     <link rel="stylesheet" href="styles.css"/>
 </head>
-<body>
+<body> <!--onload="cargaTodo()">-->
+    
     <div class="container">
         <h1>Piedra papel o tijeras</h1>
 
@@ -23,15 +24,27 @@
         </div>
 
         <div id="group-btn">
-            <button id="rock" type="button">
+            <!--<button  onclick ="cargaTodo()" id="rock" type="button">
+                <img src="img/rock.svg"/>
+            </button>-->
+            
+            <button onclick ="juego('piedra')"  id="rock" type="button" >
                 <img src="img/rock.svg"/>
             </button>
-            <button id="paper" type="button">
+            
+            <button onclick ="juego('papel')"  id="paper" >
                 <img src="img/paper.svg"/>
             </button>
-            <button id="scissors" type="button">
+
+            <button onclick ="juego('tijeras')" id="scissors" >
                 <img src="img/scissors.svg"/>
             </button>
+            <!--<button onclick ="cargaTodo()" id="paper" type="button">
+                <img src="img/paper.svg"/>
+            </button>
+            <button onclick ="cargaTodo()" id="scissors" type="button">
+                <img src="img/scissors.svg"/>
+            </button>-->
         </div>
 
 
