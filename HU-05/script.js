@@ -14,7 +14,24 @@ const LOST = 2;
 
 let isPlaying = false;
 
-let PptDto = {}; //PptId , nombre, usuario1, eleccion1, usuario2, eleccion2, ganador
+const PptDto = {
+    pptId, 
+    nombre,
+    usuario1,
+    eleccion1,
+    usuario2,
+    eleccion2,
+    ganador
+}; 
+
+function setPpt(Dtp){
+    this.PptDto.pptId = Dtp.pptId; 
+    this.PptDto.nombre = Dtp.nombre; 
+    this.PptDto.eleccion1 = Dtp.eleccion1; 
+    this.PptDto.usuario2 = Dtp.usuario2;
+    this.PptDto.eleccion2 = Dtp.eleccion2; 
+    this.PptDto.ganador = Dtp.ganador;  
+}
 
 
 const rock = document.getElementById("rock");
@@ -25,31 +42,24 @@ const userImg = document.getElementById("user-img");
 const machineImg = document.getElementById("machine-img");
 
 function juego(algo){
+
+    let ruta = "http://localhost:8080/v1/ppts/1/usuarioId=1?accion=eleccion?eleccion=";
+
+    let peticion = new XMLHttpRequest();
+
+    peticion.onreadystatechange = procesarJuegos;
+
+    peticion.open("POST", ruta +algo, true);
+
+    peticion.setRequestHeader ( "Content-Type" , "application/json" ) ;
+
+    peticion.send();
      
-
-    //console.log(algo +" paso por aqui ");
-    if(algo == "rock"){
-        //console.log("Hola");
-        rock.addEventListener("click",play(ROCK), true); 
-        //console.log("Adios");
-        gestorRespuestaPpt ();
-        //cargaTodo ();
-    }
-
-    if(algo == "paper"){
-        rock.addEventListener("click",play(PAPER), true);
-        gestorRespuestaPpt ();
-        //cargaTodo ();
-    }
-    if(algo == "scissors"){
-        rock.addEventListener("click",play(SCISSORS), true);
-        gestorRespuestaPpt ();
-        cargaTodo ();
-    }
+   
     
 }
 
-function play(userOption) {
+/*function play(userOption) {
     if(isPlaying) return;
 
     isPlaying = true;
@@ -128,46 +138,29 @@ function cargaTodo () {
     obtenerJuegoPPT () ;
     
 
-}
+}*/
 
-function obtenerJuegoPPT() {
-
-    let peticion = new XMLHttpRequest();
-
-    peticion.onreadystatechange = procesarJuegos;
-
-    peticion.open("POST", "https://califas.mocklab.io/v1/ppts/1/usuarioId=1?accion=eleccion?eleccion=tijeras", true);
-
-    peticion.setRequestHeader ( "Content-Type" , "application/json" ) ;
-
-    peticion.send();
-    
-    //peticion.send({"nombre":"fulanito", "email":"fulanito@de.tal", "password":"losFulanitosSonPersonas"});
-
-
-}
 
 function procesarJuegos(){
-    if(this.status==200){
-        console.log("Algo"); 
+    if(this.status==204){
+
+        userImg.src = "img/" + userOption + ".svg";
+        resultText.innerHTML = "Escojiendo";
+        switch (result) {
+            case TIE:
+                resultText.innerHTML = "Empate";
+                break;
+            case WIN:
+                resultText.innerHTML = "¡Ganaste!";
+                break;
+            case LOST:
+                resultText.innerHTML = "¡Perdiste!";
+                break;
+        }
     }else{
-        console.log(this.status); 
-        console.log("Otra cosa"); 
+        console.log(this.status);
     }
-    switch (this.status){
-        case 204:
-            console.log("La petición se ha completado con éxito pero su respuesta no tiene ningún contenido");
-            break;
-        case 404:
-            console.log("El servidor no pudo encontrar el contenido solicitado");
-            break;
-        case 503:
-            console.log("El servidor no está listo para manejar la petición.");
-            break;
-        default:
-            console.log("Error desconocido");
-            break;
-    }
+    
     
 }
 
