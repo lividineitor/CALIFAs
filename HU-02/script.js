@@ -1,11 +1,47 @@
 function cargaTodo () {
+    setUsuario () ;
+
 
     //obtenerJuegoVolado () ;
     //obtenerJuegos () ;
-    obtenerCola () ;
+    //obtenerCola () ;
+}
+
+    var usuarioActivo ;
+
+function setUsuario () {
+
+    usuarioActivo = localStorage.getItem( "usuarioId" ) ;
+    console.log ( 'usuario-->' + usuarioActivo ) ;
+    console.log ( Storage.length ) ;
+}
+
+function cerrarSesion ( usuarioId ) {
+
+    let peticion = new XMLHttpRequest () ;
+
+    peticion.onreadystatechange = manejoDeSesion ;
+
+    peticion.open ( "POST" , "http://localhost:8080/v1/ppts" , true ) ;
+
+    peticion.setRequestHeader ( "Content-Type" , "application/json" ) ;
+    peticion.setRequestHeader ( "Accept" , "application/json" ) ;
+
+    peticion.send ( '{"usuarioId1":1,"usuarioId2":2}' ) ;
 
 }
 
+function manejoDeSesion () {
+
+    if ( this.readyState == 4 ) {
+        if ( this.status == 200 )
+            console.log ( "Éxito" ) ;
+
+        else if ( this.status == 501 )
+            console.log ( "que pex" ) ;
+    }
+
+}
 
 function obtenerJuegos() {
 
@@ -170,7 +206,7 @@ function cargajuego() {
     document.getElementById("imgjuego").setAttribute("style", "display:none");
     //document.getElementById("contenedorgeneral").contentWindow.removeAttribute("imgjuego");
     //document.getElementById("juego").contentWindow.location.reload();
-    
+
 }
 
 
@@ -188,7 +224,7 @@ function cargaplaylist() {
 
 
 
-function twitterPost() { 
+function twitterPost() {
 
   const got = require('got');
   const crypto = require('crypto');
@@ -197,29 +233,29 @@ function twitterPost() {
 
   var consumer_key='oNLIVcpxA29G3CVKuqNLmsmZw';
   var consumer_secret='Tx3qUptabj9GV9OComnS13YKXMujrIRA5foCn8wI7G6HCBrcBA';
-  
+
   const readline = require('readline').createInterface({
     input: process.stdin,
     output: process.stdout
   });
-  
-  
+
+
   // The code below sets the consumer key and consumer secret from your environment variables
   // To set environment variables on macOS or Linux, run the export commands below from the terminal:
   // export CONSUMER_KEY='YOUR-KEY'
   // export CONSUMER_SECRET='YOUR-SECRET'
   //const consumer_key = process.env.CONSUMER_KEY;
   //const consumer_secret = process.env.CONSUMER_SECRET;
-  
-  
+
+
   // Be sure to add replace the text of the with the text you wish to Tweet.
   // You can also add parameters to post polls, quote Tweets, Tweet with reply settings, and Tweet to Super Followers in addition to other features.
   const data = {
     "text": "Hello world! This is my first tweet from JS"
   };
-  
+
   const endpointURL = `https://api.twitter.com/2/tweets`;
-  
+
   // this example uses PIN-based OAuth to authorize the user
   const requestTokenURL = 'https://api.twitter.com/oauth/request_token?oauth_callback=oob&x_auth_access_type=write';
   const authorizeURL = new URL('https://api.twitter.com/oauth/authorize');
@@ -232,7 +268,7 @@ function twitterPost() {
     signature_method: 'HMAC-SHA1',
     hash_function: (baseString, key) => crypto.createHmac('sha1', key).update(baseString).digest('base64')
   });
-  
+
   async function input(prompt) {
     return new Promise(async (resolve, reject) => {
       readline.question(prompt, (out) => {
@@ -241,13 +277,13 @@ function twitterPost() {
       });
     });
   }
-  
+
   async function requestToken() {
     const authHeader = oauth.toHeader(oauth.authorize({
       url: requestTokenURL,
       method: 'POST'
     }));
-  
+
     const req = await got.post(requestTokenURL, {
       headers: {
         Authorization: authHeader["Authorization"]
@@ -259,8 +295,8 @@ function twitterPost() {
       throw new Error('Cannot get an OAuth request token');
     }
   }
-  
-  
+
+
   async function accessToken({
     oauth_token,
     oauth_token_secret
@@ -281,23 +317,23 @@ function twitterPost() {
       throw new Error('Cannot get an OAuth request token');
     }
   }
-  
-  
+
+
   async function getRequest({
     oauth_token,
     oauth_token_secret
   }) {
-  
+
     const token = {
       key: oauth_token,
       secret: oauth_token_secret
     };
-  
+
     const authHeader = oauth.toHeader(oauth.authorize({
       url: endpointURL,
       method: 'POST'
     }, token));
-  
+
     const req = await got.post(endpointURL, {
       json: data,
       responseType: 'json',
@@ -314,8 +350,8 @@ function twitterPost() {
       throw new Error('Unsuccessful request');
     }
   }
-  
-  
+
+
   (async () => {
     try {
       // Get request token
@@ -337,7 +373,7 @@ function twitterPost() {
     }
     process.exit();
   })();
-  
+
   /*FIN DEL CÓDIGO PARA PUBLICAR UN TWEET*/
 
 }

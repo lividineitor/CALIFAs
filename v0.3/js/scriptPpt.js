@@ -1,33 +1,43 @@
 // Elementos para construir la ruta
 
 const backend = 'http://localhost:8080/v1/' ;
-const recurso = 'ppts/' ;
+const recurso = 'ppts' ;
 
-let pptId ;
-let usuario ;
+let usuarioId ;
 
+let PptDto = {
 
-const PptDto = {
-    pptId:0,
-    nombre:"",
-    usuario1:0,
-    eleccion1:"",
-    usuario2:0,
-    eleccion2:"",
-    ganador:0
-};
+    pptId: 0 ,
+    nombre: '' ,
+    cantidadDeUsuariosMinima: 0 ,
+    cantidadDeUsuariosMaxima: 0 ,
+    logotipo: '' ,
+    usuarioId1: 0 ,
+    eleccion1: '' ,
+    usuarioId2: 0 ,
+    eleccion2: '' ,
+    ganador: 0
 
-function setPpt( Dto , miId ){
-    this.PptDto.pptId = Dto.pptId;
-    this.PptDto.nombre = Dto.nombre;
-    this.PptDto.eleccion1 = Dto.eleccion1;
-    this.PptDto.usuario2 = Dto.usuario2;
-    this.PptDto.eleccion2 = Dto.eleccion2;
-    this.PptDto.ganador = Dto.ganador;
+} ;
 
-    this.usuario = miId ;
-}
+function cargaDatos () {
 
+    this.usuarioId = sessionStorage.getItem ( 'usuarioId' ) ;
+
+    PptDto.pptId = sessionStorage.getItem ( 'pptId' ) ;
+    PptDto.nombre = sessionStorage.getItem ( 'nombre' ) ;
+    PptDto.cantidadDeUsuariosMinima = sessionStorage.getItem ( 'cantidadDeUsuariosMinima' ) ;
+    PptDto.cantidadDeUsuariosMaxima = sessionStorage.getItem ( 'cantidadDeUsuariosMaxima' ) ;
+    PptDto.logotipo = sessionStorage.getItem ( 'logotipo' ) ;
+    PptDto.usuarioId1 = sessionStorage.getItem ( 'usuarioId1' ) ;
+    PptDto.eleccion1 = sessionStorage.getItem ( 'eleccion1' ) ;
+    PptDto.usuarioId2 = sessionStorage.getItem ( 'usuarioId2' ) ;
+    PptDto.eleccion2 = sessionStorage.getItem ( 'eleccion2' ) ;
+    PptDto.ganador = sessionStorage.getItem ( 'ganador' ) ;
+
+    console.log ( this.PptDto ) ;
+
+} ;
 
 const rock = document.getElementById("rock");
 const paperBtn = document.getElementById("paper");
@@ -38,18 +48,9 @@ const machineImg = document.getElementById("machine-img");
 
 function juego(algo){
 
-    let eleccion ;
+    let pptId = PptDto.pptId ;
 
-    this.pptId = this.PptDto.pptId ;
-
-    if ( usuario = this.PptDto.usuario1 )
-        eleccion = this.PptDto.eleccion1 ;
-
-    else
-        eleccion = this.PptDto.eleccion2 ;
-
-
-    let ruta = backend + recurso + pptId + "?usuarioId=" + usuario + "&accion=eleccion&eleccion=" + eleccion ;
+    let ruta = backend + recurso + '/' + pptId + "?usuarioId=" + this.usuarioId + "&action=eleccion&eleccion=" + algo ;
 
     let peticion = new XMLHttpRequest();
 

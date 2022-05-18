@@ -9,30 +9,29 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="estilos.css" />
-  <script src="script.js"></script>
+  <link rel="stylesheet" href="./estilos/estiloVistaPrincipal.css" />
+  <script src="./js/scriptVistaPrincipal.js"></script>
   <link rel="stylesheet" href="/lib/w3.css" />
 </head>
 
-<body onload="cargaTodo()">
+<body onload="cargaTodo()" onunload="cerrarSesion()">
 
   <!-- Header for the menu -->
   <header>
     <div class="container w3-padding w3-black">
       <p class="logo">Califa's</p>
       <nav>
-        <a href="#" class="w3-button w3-black botones">INICIO</a>
         
         <div class="w3-dropdown-hover w3-hide-small ">
           <button class="w3-button w3-black botones">
             JUEGOS
           </button>
           <div class="w3-dropdown-content w3-bar-block w3-card-4">
-            <a class="w3-bar-item w3-button botones" onclick="twitterPost()">Piedra papel y tijeras</a>
-            <a class="w3-bar-item w3-button botones" onclick="cargajuego()">Volados</a>
+            <a class="w3-bar-item w3-button botones" onclick="cargaPpt()">Piedra papel y tijeras</a>
+            <a class="w3-bar-item w3-button botones" onclick="cargaVolados()">Volados</a>
           </div>
         </div>    
-        <a href="#where" class="w3-button  w3-black botones" onclick="cerrarSesion(1)">CERRAR SESIÓN</a>
+        <a href="#where" class="w3-button  w3-black botones" onclick="cerrarSesion()">CERRAR SESIÓN</a>
       </nav>
     </div>
   </header>
@@ -60,10 +59,9 @@
             alt="Imagen Juegos" class="w3-hover-opacity" style="" />
           <object data="" id="objetojuego"></object>
         </div>
-<!--
         <div id="cola">
           <object data="../HU-03/Cola.html" id="objetocola"></object>
-        </div>-->
+        </div>
       </div>
     </section>
 
@@ -81,11 +79,11 @@
               Buscar
             </button>
           </div>
-<!--          <iframe src="https://open.spotify.com/embed/playlist/6mRRGF4klfgUzbD2ZKOCq0?utm_source=generator&theme=0"
+          <iframe src="https://open.spotify.com/embed/playlist/6mRRGF4klfgUzbD2ZKOCq0?utm_source=generator&theme=0"
             width="500" height="700" frameborder="0" allowfullscreen=""
             allow="autoplay; clipboard-write; encrypted-media; fullscreen;  picture-in-picture" id="spoti-widget">
           </iframe>
-        </div>-->
+        </div>
 
         <!-- Twitter. -->
         <div id="Twitter" style="max-width: 500px; ">

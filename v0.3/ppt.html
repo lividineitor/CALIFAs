@@ -4,44 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Piedra papel o tijeras</title>
-    <link rel="stylesheet" href="styles.css"/>
+    <link rel="stylesheet" href="./estilos/estiloPpt.css"/>
 </head>
-<body>
+<body onload="cargaDatos()">
     
     <div class="container">
         <h1>Piedra papel o tijeras</h1>
 
         <div id="result">
     
-            <img id="machine-img" src="img/rock.svg">
+            <img id="machine-img" src="images/rock.svg">
 
             <div id="start-text">
                 <p>Elija una opción</p>
             </div>
 
-            <img id="user-img" src="img/rock.svg">
+            <img id="user-img" src="images/rock.svg">
 
         </div>
 
         <div id="group-btn">
             
             <button onclick ="juego('piedra')"  id="rock" type="button" >
-                <img src="img/rock.svg"/>
+                <img src="images/rock.svg"/>
             </button>
             
             <button onclick ="juego('papel')"  id="paper" >
-                <img src="img/paper.svg"/>
+                <img src="images/paper.svg"/>
             </button>
 
             <button onclick ="juego('tijeras')" id="scissors" >
-                <img src="img/scissors.svg"/>
+                <img src="images/scissors.svg"/>
             </button>
 
         </div>
 
 
     </div>
-    <script src="script.js"></script>
+    <script src="./js/scriptPpt.js"></script>
 </body>
 </html>
 

@@ -241,7 +241,6 @@ function validarUsuario () {
         login.setRequestHeader ( "Accept" , "application/json" ) ;
 
         login.send ( '{"email":"'+ usuarioCorreo + '","password":"' + usuarioPassword + '"}' ) ;
-        return true ;
     }
 
 } ;
@@ -256,13 +255,13 @@ function gestorRespuestaLogin () {
     
     if ( this.readyState == 4 ) {
 
-        cuerpoDelMensaje = JSON.parse ( this.responseText ) ;
+        let cuerpoDelMensaje = JSON.parse ( this.responseText ) ;
 
         switch ( this.status ) {
 
             case 200 :
-                localStorage.setItem ( "usuarioId" , cuerpoDelMensaje.usuarioId ) ;
-                window.location.href = "./a/segundo.html" ;
+                sessionStorage.setItem ( "usuarioId" , cuerpoDelMensaje.usuarioId ) ;
+                window.location.href = "./vistaPrincipal.html" ;
                 break ;
                 
             case 400 :

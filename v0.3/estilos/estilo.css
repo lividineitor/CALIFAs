@@ -1,0 +1,262 @@
+/* Estilos para la plantilla */
+
+body, html {
+  height: 100%;
+  font-family: "Inconsolata", sans-serif;
+}
+
+.bgimg {
+  background-position: center;
+  background-size: cover;
+  background-image: url("https://wallpapercave.com/wp/wc1765288.jpg");
+  min-height: 75%;
+}
+
+.menu {
+  display: none;
+}
+
+.contenedorGeneral {
+
+    background-color: white ;
+    width: 50% ;
+
+}
+
+.btnEye {
+
+    background-color: transparent ;
+    border: transparent ;
+
+}
+
+.btnEye:hover {
+    color: red ;
+}
+
+.btnEye:active {
+
+    color: purple ;
+
+}
+
+
+/*
+#loginContainer{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+*/
+
+
+
+#usuarioForm{
+    margin-bottom: 15px;
+}
+
+#emailForm{
+    margin-bottom: 20px;
+}
+
+#passwordForm, #password2Form{ 
+    margin-left: 34px;
+    margin-bottom: 15px;  
+}
+
+
+.btnNormal {
+
+    background-color: black ;
+    color: white ;
+    margin: 15px;
+
+}
+
+
+/* Paleta de colores modificada */
+
+:root {
+
+    --black: #3f3f3f ;
+    --red: #ff3f7f ;
+    --green: #00ffaf ;
+    --yellow: #ffdf7f ;
+    --blue: ;
+    --magenta: ;
+    --cyan: ;
+    --white: #ffffff ;
+
+    /* Brillantes */
+
+    --bblack: #aaaaaa ;
+    --bred: #ff6faf ;
+
+}
+
+/* Colores de fondo */
+
+.liv-bg-black {
+
+    background-color: var(--black)!important ;
+}
+
+.liv-bg-red {
+
+    background-color: var(--red)!important ;
+    color: var(--white)!important ;
+}
+
+.liv-bg-green {
+
+    background-color: var(--green)!important ;
+
+}
+
+.liv-bg-white {
+
+    background-color: var(--white)!important ;
+    color: var(--black)!important ;
+
+}
+
+/* Brillantes */
+
+.liv-bbg-black {
+
+    background-color: var(--bblack)!important ;
+}
+
+/* Colores de frente */
+
+.liv-text-black {
+
+    color: var(--black)!important ;
+}
+
+.liv-text-red {
+
+    color: var(--red)!important ;
+}
+
+.liv-text-green {
+
+    color: var(--green)!important ;
+}
+
+.liv-text-yellow {
+
+    color: var(--yellow)!important ;
+}
+
+.liv-text-white {
+
+    color: var(--white)!important ;
+}
+
+/* Pocisión */
+
+.liv-pos-centro {
+
+    display: flex ;
+    justify-content: center ;
+    align-items: center ;
+
+}
+
+.liv-pos-centro-horizontal {
+
+    margin-left: auto ;
+    margin-right: auto ;
+
+}
+
+.liv-pos-centro-vertical {
+
+    position: absolute ;
+    top: 50% ;
+    transform: translateY(-50%) ;
+}
+
+/* Adornos */
+
+.liv-ra {
+
+    border-radius: 20px ;
+}
+
+.liv-ru {
+
+    border-radius: 20px 20px 0px 0px ;
+}
+
+.liv-btn {
+
+}
+
+/* Botones dentro de la interfaz */
+
+.liv-btn-active {
+
+    background-color: transparent ;
+    border: 1px solid var(--red)!important ;
+
+    color: var(--red) ;
+
+}
+
+.liv-btn-active:hover {
+
+    background-color: var(--red)!important ;
+
+    color: var(--white) ;
+
+}
+
+.liv-btn-active:active {
+
+    background-color: var(--white)!important ;
+    border: 1px solid var(--red)!important ;
+
+    color: var(--red)!important ;
+
+}
+
+
+
+/* Botones de confirmación */
+
+.liv-btn-confirmation {
+
+    background-color: var(--black)!important ;
+    border: 0 ;
+
+    color: var(--white)!important ;
+
+}
+
+.liv-btn-confirmation:hover {
+
+    background-color: var(--bblack)!important ;
+
+}
+
+.liv-btn-confirmation:active {
+
+    background-color: var(--white)!important ;
+    border: 1px solid var(--black)!important ;
+
+    color: var(--black)!important ;
+    
+}
+
+/* Comportamiento de los elementos */
+
+.liv-scroll {
+
+    overflow: auto ;
+
+}
