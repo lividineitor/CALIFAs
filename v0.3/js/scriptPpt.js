@@ -3,7 +3,7 @@
 const backend = 'http://localhost:8080/v1/' ;
 const recurso = 'ppts' ;
 
-let usuarioId ;
+var usuarioId ;
 
 let PptDto = {
 
@@ -22,7 +22,7 @@ let PptDto = {
 
 function cargaDatos () {
 
-    this.usuarioId = sessionStorage.getItem ( 'usuarioId' ) ;
+    usuarioId = sessionStorage.getItem ( 'usuarioId' ) ;
 
     PptDto.pptId = sessionStorage.getItem ( 'pptId' ) ;
     PptDto.nombre = sessionStorage.getItem ( 'nombre' ) ;
@@ -46,19 +46,38 @@ const resultText = document.getElementById("start-text");
 const userImg = document.getElementById("user-img");
 const machineImg = document.getElementById("machine-img");
 
-function juego(algo){
+function juego(userOption){
 
     let pptId = PptDto.pptId ;
 
-    let ruta = backend + recurso + '/' + pptId + "?usuarioId=" + this.usuarioId + "&action=eleccion&eleccion=" + algo ;
+    let ruta = backend + recurso + '/' + pptId + "?usuarioId=" + this.usuarioId + "&action=eleccion&eleccion=" + userOption ;
+
+    let peticion = new XMLHttpRequest();
+
+    peticion.open("POST", ruta , true);
+
+    peticion.setRequestHeader ( "Content-Type" , "application/json" ) ;
+    peticion.setRequestHeader ( "Accept" , "application/json" ) ;
+
+    peticion.send();
+
+}
+
+function obtenerResultados () {
+
+    let pptId = PptDto.pptId ;
+
+    let ruta = backend + recurso + '/' + pptId ;
 
     let peticion = new XMLHttpRequest();
 
     peticion.onreadystatechange = procesarJuegos;
 
-    peticion.open("POST", ruta , true);
+    peticion.open("GET", ruta , true);
 
     peticion.setRequestHeader ( "Content-Type" , "application/json" ) ;
+    peticion.setRequestHeader ( "Accept" , "application/json" ) ;
+
 
     peticion.send();
 
@@ -147,15 +166,39 @@ function cargaTodo () {
 
 
 function procesarJuegos(){
-    if(this.status==204){
+    if(this.status==200){
 
-    userImg.src = "img/" + userOption + ".svg";
+        let backPpt = JSON.parse ( this.responseText ) ;
 
-    resultText.innerHTML = "Escojiendo";
+        let election ;
+
+        if ( backPpt.usuarioId1 == usuarioId )
+            election = backPpt.eleccion1 ;
+
+        else
+            election = backPpt.eleccion2 ;
+
+        document.getElementById('user-img').setAttribute ( "src" , "./images/" + election + ".svg" ) ;
+
+        resultText.innerHTML = "Escojiendo";
+
+        if ( backPpt.ganador == -1 )
+            resultText.innerHTML = "Empate";
+
+        else if ( backPpt.ganador == usuarioId )
+                resultText.innerHTML = "¡Ganaste!";
+
+        else
+                resultText.innerHTML = "¡Perdiste!";
+
+        console.log ( backPpt.ganador ) ;
+                console.log ( usuarioId ) ;
+
+
+/*
 
     const interval = setInterval(function(){
-        const machineOption = calcMachineOption();
-        machineImg.src = "img/" + machineOption + ".svg";
+        machineImg.src = "../images/" + PptDto. + ".svg";
     }, 200);
 
     setTimeout(function () {
@@ -165,7 +208,7 @@ function procesarJuegos(){
         const machineOption = calcMachineOption();
         const result = calcResult(userOption, machineOption);
 
-        machineImg.src = "img/" + machineOption + ".svg";
+        machineImg.src = "../images/" + machineOption + ".svg";
 
         switch (result) {
             case TIE:
@@ -181,8 +224,9 @@ function procesarJuegos(){
         isPlaying = false;
     } , 2000 ) ;
     }else{
-        console.log(this.status);
+        console.log(this.status);*/
     }
+
 
 
 }

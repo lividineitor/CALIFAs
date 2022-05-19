@@ -97,11 +97,14 @@ function cerrarSesion ( usuarioId ) {
 function manejoDeSesion () {
 
     if ( this.readyState == 4 ) {
+
+        sessionStorage.clear() ;
+        window.location.href = './login.html' ;
+        
         switch ( this.status ) {
 
             case 204 :
-                sessionStorage.clear() ;
-                window.location.href = './login.html' ;
+                console.log ( 'Petición cerrar sesión, estado ' + this.status ) ;
                 break ;
         
             case 501 :
@@ -114,6 +117,15 @@ function manejoDeSesion () {
 
 // Carga la información de inicialización del juego al cargar la página
 function cargaPpt() {
+
+    const peticion = new XMLHttpRequest () ;
+
+    peticion.open ( "POST" , backend + recursoPpt , true ) ;
+
+    peticion.setRequestHeader ( "Content-Type" , "application/json" ) ;
+    peticion.setRequestHeader ( "Accept" , "application/json" ) ;
+
+    peticion.send ( '{"usuarioId1":1,"usuarioId2":2}' ) ;
 
 
     sessionStorage.setItem ( 'pptId' , respuestaPpt.pptId ) ;
